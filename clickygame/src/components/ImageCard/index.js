@@ -1,18 +1,18 @@
 import React from "react";
 import "./style.css";
 
-function ImageCard({ imagesJSON, handlePlayerGuess }) {
+function ImageCard({ imagesJSON, handlePlayerGuess, handleIncrement }) {
     return (
-        <div className="row">
-            <div className="col-12">
+        <div className="row justify-content-center">
+
                 {imagesJSON.map((myObj) => {
                     return (
-                        <div className="card img-container col-3" 
+                        <div className="card img-container justify-content-center col-3" 
                         data-id={myObj.id} 
                         key={myObj.id}>
                                 <img 
-                                onClick={(event) => handlePlayerGuess(event)} 
-                                className="img-fluid" 
+                                onClick={(event) => handlePlayerGuess(event) && handleIncrement(event)}
+                                className="card-img" 
                                 data-id={myObj.id} 
                                 key={myObj.id}
                                 alt={myObj.name} 
@@ -20,7 +20,7 @@ function ImageCard({ imagesJSON, handlePlayerGuess }) {
                         </div>
                     )
                 })}
-            </div>
+
         </div>
     );
 }
