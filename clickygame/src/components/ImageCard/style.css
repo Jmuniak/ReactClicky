@@ -1,8 +1,8 @@
 .img-container {
     background: #fff;
     border-radius: 15px;
-    width: 325px !important;
-    height: 325px !important;
+    width: 275px !important;
+    height: 275px !important;
     min-width: 150px !important;
     min-height: 150px !important;
     position: relative !important;
@@ -16,9 +16,8 @@
   }
 
   .card-img {
-    max-height: 300px;
+    max-height: 275px;
     height: 100%;
     width: 100%;
-
   }
  

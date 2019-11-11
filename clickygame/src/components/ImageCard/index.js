@@ -7,7 +7,7 @@ function ImageCard({ imagesJSON, handlePlayerGuess, handleIncrement }) {
 
                 {imagesJSON.map((myObj) => {
                     return (
-                        <div className="card img-container justify-content-center col-3" 
+                        <div className="card img-container justify-content-center col-2" 
                         data-id={myObj.id} 
                         key={myObj.id}>
                                 <img 
