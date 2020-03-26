@@ -4,7 +4,6 @@ import "./style.css";
 function ImageCard({ imagesJSON, handlePlayerGuess, handleIncrement }) {
     return (
         <div className="row justify-content-center">
-
                 {imagesJSON.map((myObj) => {
                     return (
                         <div className="card img-container justify-content-center col-2" 
@@ -20,7 +19,6 @@ function ImageCard({ imagesJSON, handlePlayerGuess, handleIncrement }) {
                         </div>
                     )
                 })}
-
         </div>
     );
 }

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-// import './App.css';
+import './App.css';
 import imagesJSON from "./images.json";
-import NavBar from './components/NavBar';
+import ScoreBoard from './components/ScoreBoard';
 import ImageCard from './components/ImageCard/';
+import Footer from './components/Footer/'
 
 
 class App extends Component {
@@ -13,15 +14,14 @@ class App extends Component {
     currentScore: 0,
     bestScore: 0,
     alert: "Click an image to begin",
-    roundsPlayed: 0
+    roundsPlayed: 0,
+    wins: 0
   }
 
-  ////
   handleIncrement = () => {
     this.setState({ clickCount: this.state.clickCount + 1 });
   }
 
-  ////
   checkImageId = id => {
     let checkImage = this.state.imagesGuessed.find(function (element) {
       return element === id;
@@ -34,7 +34,6 @@ class App extends Component {
     }
   };
 
-  ////
   handlePlayerGuess = (event) => {
     let clickCount = this.state.clickCount;
     let currentGuess = event.target.dataset.id;
@@ -44,6 +43,7 @@ class App extends Component {
     let alert = this.state.alert;
     let imagesGuessed = this.state.imagesGuessed;
     let roundsPlayed = this.state.roundsPlayed;
+    let wins = this.state.wins;
     if (guessCheck === "Incorrect") {
       alert = "You already clicked that image this round!";
       bestScore = currentScore > bestScore ? currentScore : bestScore;
@@ -52,14 +52,14 @@ class App extends Component {
       imagesGuessed = [];
     }
     else {
-      alert = "Correct, no matches yet this round!";
+      alert = `Nice, no matching images yet this round!`;
       imagesGuessed.push(currentGuess);
       currentScore++;
       bestScore = currentScore > bestScore ? currentScore : bestScore;
       if (currentScore === 12) {
-        let averageClicks = (clickCount + 1) / (roundsPlayed + 1);
-        alert = (`You Win! it took you ${clickCount + 1} clicks and ${roundsPlayed + 1} rounds to Win
-        Your average is ${averageClicks} clicks per round`);
+        wins++;
+        roundsPlayed++;
+        alert = `You Win!!! It took you ${clickCount + 1} clicks and ${roundsPlayed + 1} rounds to Win.`;
       }
     }
     this.setState({
@@ -67,30 +67,36 @@ class App extends Component {
       alert: alert,
       clickCount: clickCount + 1,
       roundsPlayed: roundsPlayed,
+      wins: wins,
       currentScore: currentScore,
       bestScore: bestScore,
       imagesGuessed: imagesGuessed,
     })
   }
 
-  ////
 
   render() {
     return (
       <div>
-          <NavBar
-            currentScore={this.state.currentScore}
-            bestScore={this.state.bestScore}
-            roundsPlayed={this.state.roundsPlayed}
-            clickCount={this.state.clickCount}
-            alert={this.state.alert}
-          >The `Don't Match` Memory Game!
-          </NavBar>
+        <ScoreBoard
+          currentScore={this.state.currentScore}
+          bestScore={this.state.bestScore}
+          roundsPlayed={this.state.roundsPlayed}
+          wins={this.state.wins}
+          clickCount={this.state.clickCount}
+          alert={this.state.alert}
+        >The `Don't Match` Memory Game!
+        </ScoreBoard>
+        <div>
           <ImageCard imagesJSON={this.state.imagesJSON}
             handlePlayerGuess={this.handlePlayerGuess}
             handleIncrement={this.handleIncrement}
           />
+        </div>
+
+        <Footer />
       </div>
+      
     );
   };
 }
