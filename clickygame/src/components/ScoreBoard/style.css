@@ -1,7 +1,29 @@
 .jumbotron {
-    background: #c4f8c3;
+    background: #343235;
+    color: white;
     margin-bottom: 0px;
-    padding: 25px 5px 1px 5px;
+    padding: 25px 5px 15px 5px;
+    /* box-shadow: 0 3px 6px #999, 0 3px 6px #999; */
     border-radius: 15px;
-
+    margin: 5px 5px 5px 5px;
 }
+
+.row {
+    border-radius: 15px;
+}
+
+.col {
+    background: #343235;
+    color: white;
+}
+
+p {
+    /* background-color: #020003; */
+    color: white;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 3px;
+    font-size: 1rem;
+}
+
+/* background: #c4f8c3; */

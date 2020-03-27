@@ -5,25 +5,22 @@ function ScoreBoard(props) {
     return (
         <div className="jumbotron text-center">
             <h1>{props.children}</h1>
-            <p>Try to click all 12 images without clicking the same image twice</p>
-            <div className="best-score">
-                <h4>Your Best Score is: {props.bestScore}</h4>
+            <h6>Try to click all 12 images without clicking the same image twice</h6>
+            <div className="row">
+                <div className="col">
+                    <p className="best-score">Best Score: {props.bestScore}</p>
+                    <p className="rounds-played">Rounds Played: {props.roundsPlayed}</p>
+                </div>
+                <div className="col">
+                    <p className="wins">Rounds Won: {props.wins}</p>
+                    <p className="click-count">Click Count: {props.clickCount}</p>
+                </div>
+
             </div>
-            <div className="rounds-played">
-                <h4>Rounds Played: {props.roundsPlayed}</h4>
-            </div>
-            <div className="wins">
-                <h4>Rounds Won: {props.wins}</h4>
-            </div>
-            <div className="click-count">
-                <h4>Click Count: {props.clickCount}</h4>
-            </div>
-            <div className="current-score">
-                <h4>Your Current Score is: {props.currentScore}  / 12</h4>
-            </div>
-            <div className="alert-div">
-                <h4>{props.alert}</h4>
-            </div>
+            <p className="alert-div">{props.alert}</p>
+            <div className="col">
+                    <p className="current-score">Your Current Score is: {props.currentScore}  / 12</p>
+                </div>
         </div>
     )
 }
