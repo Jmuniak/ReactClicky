@@ -2,7 +2,7 @@
   "name": "clickygame",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jmuniak.github.io/ReactClicky/",
+  "homepage": "https://github.com/Jmuniak/ReactClicky",
   "dependencies": {
     "gh-pages": "^2.1.1",
     "react": "^16.11.0",
