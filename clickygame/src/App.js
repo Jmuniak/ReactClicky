@@ -59,9 +59,14 @@ class App extends Component {
       if (currentScore === 12) {
         wins++;
         roundsPlayed++;
-        alert = `You Win!!! It took you ${clickCount + 1} clicks and ${roundsPlayed + 1} rounds to Win.`;
+        alert = `You Win!!! It took you ${clickCount++} clicks and ${roundsPlayed} rounds to Win.`;
+        // *! issue !*: once the user wins they have to click an image to start the game again *
+        // but all the guesses have been checked so it counts a loss and starts a new round, 
+        // result: falsely giving them 1 round played in order to start playing again.
+        // maybe improve this user experience by hiding all the images and showing a play again button?
       }
     }
+    // then call set state
     this.setState({
       imagesJSON: this.state.imagesJSON.sort(() => Math.random() - 0.5),
       alert: alert,
@@ -96,7 +101,7 @@ class App extends Component {
 
         <Footer />
       </div>
-      
+
     );
   };
 }
